@@ -1,0 +1,69 @@
+PROGRAM:RAY
+:ClrDraw
+:For(I,164,0,-1)
+:For(J,0,264,1)
+:0→A
+:0→B
+:1→C
+:0→H
+:(J–132.01)/82→X
+:(82.01–I)/82→Y
+:√(X²+Y²+1)→Z
+:X/Z→X
+:Y/Z→Y
+:-1/Z→Z
+:If Z²>.75
+:Then
+:-Z–√(Z²–.75)→D
+:XD→A
+:YD→B
+:1+ZD→C
+:8(XA+YB+ZC)→D
+:X–AD→X
+:Y–BD→Y
+:Z–CD→Z
+:1/√((A–1)²+(B–1)²+(C–1)²)→D
+:D(A–1)→M
+:D(B–1)→N
+:D(C–1)→O
+:8(AM+BN+CO)→D
+:M–AD→M
+:N–BD→N
+:O–CD→O
+:1/√(A²+B²+(C–1)²)→D
+:.5+max(0,(D(O–OC–MA–NB))^5)→H
+:End
+:-(1+B)/Y→D
+:If D≥0
+:Then
+:A+XD→A
+:-1→B
+:C+ZD→C
+:.2+((fPart(1000+A)<.5)≠(fPart(1000+C)<.5))→G
+:1/√((A–1)²+(B–1)²+(C–1)²)→D
+:D(1–A)→X
+:D(1–B)→Y
+:D(1–C)→Z
+:H+.5Gmax(Y,0)→H
+:If (AX+BY+CZ)²+.25>A²+B²+C²
+:0→H
+:End
+:fPart(3H)→G
+:int(3H)→H
+:.25+fPart(.75remainder(I,2)+.5remainder(J,2))→F
+:If F≤G
+:H+1→H
+:If H=0
+:Pxl–On(I,J,BLACK)
+:If H=1
+:Pxl–On(I,J,DARKGRAY)
+:If H=2
+:Pxl–On(I,J,GRAY)
+:If H=3
+:Pxl–On(I,J,MEDGRAY)
+:If H=4
+:Pxl–On(I,J,LTGRAY)
+:If H=5
+:Pxl–On(I,J,WHITE)
+:End
+:End
